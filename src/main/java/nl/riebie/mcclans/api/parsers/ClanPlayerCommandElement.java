@@ -35,7 +35,7 @@ public class ClanPlayerCommandElement extends CommandElement {
      * @param userStorageService Optional UserStorageService to improve looking up players by name. If not provided,
      *                           only online players can be parsed to a ClanPlayer.
      */
-    protected ClanPlayerCommandElement(@Nullable Text key, @Nonnull ClanService clanService, @Nullable UserStorageService userStorageService) {
+    public ClanPlayerCommandElement(@Nullable Text key, @Nonnull ClanService clanService, @Nullable UserStorageService userStorageService) {
         super(key);
         this.clanService = clanService;
         this.userStorageService = userStorageService;

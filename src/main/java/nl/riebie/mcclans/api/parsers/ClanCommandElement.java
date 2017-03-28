@@ -29,7 +29,7 @@ public class ClanCommandElement extends CommandElement {
      * @param key         The key to look up this command element
      * @param clanService The ClanService to get the Clans from
      */
-    protected ClanCommandElement(@Nullable Text key, @Nonnull ClanService clanService) {
+    public ClanCommandElement(@Nullable Text key, @Nonnull ClanService clanService) {
         super(key);
         this.clanService = clanService;
     }
