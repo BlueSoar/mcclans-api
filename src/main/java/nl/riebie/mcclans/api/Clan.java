@@ -297,6 +297,15 @@ public interface Clan {
      * Get the identifier for the economy account of the clan bank
      *
      * @return the identifier for the economy account of the clan bank
+     * @deprecated see {@link #getBank()}
      */
+    @Deprecated
     String getBankId();
+
+    /**
+     * Get the bank for this clan.
+     *
+     * @return the bank for this clan
+     */
+    ClanBank getBank();
 }
