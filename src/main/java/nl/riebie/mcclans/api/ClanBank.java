@@ -25,6 +25,7 @@ package nl.riebie.mcclans.api;
 import org.spongepowered.api.service.economy.Currency;
 import org.spongepowered.api.service.economy.account.Account;
 
+import javax.annotation.Nullable;
 import java.math.BigDecimal;
 
 /**
@@ -44,8 +45,9 @@ public interface ClanBank {
     /**
      * Get the currency used by this clan bank
      *
-     * @return the currency used by this clan bank
+     * @return the currency used by this clan bank, or null if economy is disabled
      */
+    @Nullable
     Currency getCurrency();
 
     /**
