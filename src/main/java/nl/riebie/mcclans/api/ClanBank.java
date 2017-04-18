@@ -26,7 +26,6 @@ import org.spongepowered.api.service.economy.Currency;
 import org.spongepowered.api.service.economy.account.Account;
 
 import javax.annotation.Nullable;
-import java.math.BigDecimal;
 
 /**
  * Represents the economy account of a clan bank.
@@ -56,7 +55,7 @@ public interface ClanBank {
      * @param amount the amount to withdraw
      * @return true if successful
      */
-    boolean withdraw(BigDecimal amount);
+    boolean withdraw(double amount);
 
     /**
      * Deposit an amount of currency to the clan bank
@@ -64,7 +63,7 @@ public interface ClanBank {
      * @param amount the amount to deposit
      * @return true if successful
      */
-    boolean deposit(BigDecimal amount);
+    boolean deposit(double amount);
 
     /**
      * Transfer an amount of currency from the clan bank to the provided account
@@ -73,7 +72,7 @@ public interface ClanBank {
      * @param amount  the amount to transfer
      * @return true if successful
      */
-    boolean transferFromBank(Account account, BigDecimal amount);
+    boolean transferFromBank(Account account, double amount);
 
     /**
      * Transfer an amount of currency to the clan bank from the provided account
@@ -82,12 +81,12 @@ public interface ClanBank {
      * @param amount  the amount to transfer
      * @return true if successful
      */
-    boolean transferToBank(Account account, BigDecimal amount);
+    boolean transferToBank(Account account, double amount);
 
     /**
      * Get the amount of currency in the clan bank
      *
      * @return the amount of currency in the clan bank
      */
-    BigDecimal getBalance();
+    double getBalance();
 }
