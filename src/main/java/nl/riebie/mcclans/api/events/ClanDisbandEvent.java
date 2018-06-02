@@ -24,7 +24,7 @@ package nl.riebie.mcclans.api.events;
 
 import nl.riebie.mcclans.api.Clan;
 import org.spongepowered.api.event.cause.Cause;
-import org.spongepowered.api.event.cause.NamedCause;
+import org.spongepowered.api.event.cause.EventContext;
 
 /**
  * Event fired when a clan is disbanded.
@@ -36,7 +36,7 @@ public class ClanDisbandEvent extends CancellableClanEvent {
     private Clan clan;
 
     private ClanDisbandEvent(Clan clan) {
-        super("Clan disband cancelled by an external plugin", Cause.of(NamedCause.owner(clan.getOwner())));
+        super("Clan disband cancelled by an external plugin", Cause.builder().append(clan.getOwner()).build(EventContext.empty()));
         this.clan = clan;
     }
 

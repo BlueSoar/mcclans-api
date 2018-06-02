@@ -4,7 +4,7 @@ import nl.riebie.mcclans.api.Clan;
 import nl.riebie.mcclans.api.ClanPlayer;
 import org.spongepowered.api.command.CommandSource;
 import org.spongepowered.api.event.cause.Cause;
-import org.spongepowered.api.event.cause.NamedCause;
+import org.spongepowered.api.event.cause.EventContext;
 import org.spongepowered.api.world.Location;
 import org.spongepowered.api.world.World;
 
@@ -46,7 +46,7 @@ public class ClanSetHomeEvent extends CancellableClanEvent {
         private final ClanPlayer clanPlayer;
 
         public User(ClanPlayer clanPlayer, Clan clan, Location<World> location) {
-            super(Cause.of(NamedCause.source(clanPlayer)), clan, location);
+            super(Cause.builder().append(clanPlayer).build(EventContext.empty()), clan, location);
 
             this.clanPlayer = clanPlayer;
         }
@@ -65,7 +65,7 @@ public class ClanSetHomeEvent extends CancellableClanEvent {
     public static class Admin extends ClanSetHomeEvent {
 
         public Admin(CommandSource commandSource, Clan clan, Location<World> location) {
-            super(Cause.of(NamedCause.source(commandSource)), clan, location);
+            super(Cause.builder().append(commandSource).build(EventContext.empty()), clan, location);
         }
     }
 
@@ -75,7 +75,7 @@ public class ClanSetHomeEvent extends CancellableClanEvent {
     public static class Plugin extends ClanSetHomeEvent {
 
         public Plugin(Clan clan, Location<World> location) {
-            super(Cause.of(NamedCause.source(location)), clan, location);
+            super(Cause.builder().append(location).build(EventContext.empty()), clan, location);
         }
     }
 }

@@ -3,7 +3,7 @@ package nl.riebie.mcclans.api.events;
 import nl.riebie.mcclans.api.Clan;
 import nl.riebie.mcclans.api.ClanPlayer;
 import org.spongepowered.api.event.cause.Cause;
-import org.spongepowered.api.event.cause.NamedCause;
+import org.spongepowered.api.event.cause.EventContext;
 
 /**
  * Event fired when a Player attempts to start a clan home teleport. Is fired before the countdown or checking the user's economy balance.
@@ -16,7 +16,7 @@ public class ClanHomeTeleportEvent extends CancellableClanEvent {
     private ClanPlayer clanPlayer;
 
     public ClanHomeTeleportEvent(Clan clan, ClanPlayer clanPlayer) {
-        super("Clan home teleport cancelled by an external plugin", Cause.of(NamedCause.owner(clanPlayer)));
+        super("Clan home teleport cancelled by an external plugin", Cause.builder().append(clanPlayer).build(EventContext.empty()));
         this.clan = clan;
         this.clanPlayer = clanPlayer;
     }

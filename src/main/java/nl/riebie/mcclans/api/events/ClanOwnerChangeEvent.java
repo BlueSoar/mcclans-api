@@ -25,7 +25,7 @@ package nl.riebie.mcclans.api.events;
 import nl.riebie.mcclans.api.Clan;
 import nl.riebie.mcclans.api.ClanPlayer;
 import org.spongepowered.api.event.cause.Cause;
-import org.spongepowered.api.event.cause.NamedCause;
+import org.spongepowered.api.event.cause.EventContext;
 
 /**
  * Event fired when an owner of a clan is changed.
@@ -39,7 +39,7 @@ public class ClanOwnerChangeEvent extends CancellableClanEvent {
     private ClanPlayer newOwner;
 
     private ClanOwnerChangeEvent(Clan clan, ClanPlayer previousOwner, ClanPlayer newOwner) {
-        super("Clan owner change cancelled by an external plugin", Cause.of(NamedCause.owner(newOwner)));
+        super("Clan owner change cancelled by an external plugin", Cause.builder().append(newOwner).build(EventContext.empty()));
         this.clan = clan;
         this.previousOwner = previousOwner;
         this.newOwner = newOwner;

@@ -25,7 +25,7 @@ package nl.riebie.mcclans.api.events;
 import nl.riebie.mcclans.api.Clan;
 import nl.riebie.mcclans.api.ClanPlayer;
 import org.spongepowered.api.event.cause.Cause;
-import org.spongepowered.api.event.cause.NamedCause;
+import org.spongepowered.api.event.cause.EventContext;
 
 /**
  * Event fired when a member leaves a clan.
@@ -38,7 +38,7 @@ public class ClanMemberLeaveEvent extends CancellableClanEvent {
     private ClanPlayer clanMember;
 
     private ClanMemberLeaveEvent(Clan clan, ClanPlayer clanMember) {
-        super("Member leaving the clan cancelled by an external plugin", Cause.of(NamedCause.source(clanMember)));
+        super("Member leaving the clan cancelled by an external plugin", Cause.builder().append(clanMember).build(EventContext.empty()));
         this.clan = clan;
         this.clanMember = clanMember;
     }

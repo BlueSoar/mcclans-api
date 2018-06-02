@@ -24,7 +24,7 @@ package nl.riebie.mcclans.api.events;
 
 import nl.riebie.mcclans.api.ClanPlayer;
 import org.spongepowered.api.event.cause.Cause;
-import org.spongepowered.api.event.cause.NamedCause;
+import org.spongepowered.api.event.cause.EventContext;
 
 /**
  * A clan event which is fired when a clan is created.
@@ -38,7 +38,7 @@ public class ClanCreateEvent extends CancellableClanEvent {
     private final ClanPlayer owner;
 
     public ClanCreateEvent(String clanTag, String clanName, ClanPlayer owner) {
-        super("Clan creation cancelled by an external plugin", Cause.of(NamedCause.owner(owner)));
+        super("Clan creation cancelled by an external plugin", Cause.builder().append(owner).build(EventContext.empty()));
 
         this.clanTag = clanTag;
         this.clanName = clanName;
